@@ -30,7 +30,7 @@ section {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 10px 20px;
+  padding: 20px 20px;
   background: #000;
   position: sticky;
   top: 0;
@@ -94,7 +94,7 @@ section {
   align-items: center;
   padding: 80px 20px;
   background: #000;
-  min-height: 620px;
+  min-height: 660px;
 }
 
 .hero-content-text {
@@ -137,6 +137,11 @@ section {
 .help-button:hover {
   background: #FF1E2D;
   border-color: #FF1E2D;
+}
+
+.hero-image {
+  width: 400px;
+  height: auto;
 }
 
 /*Features Section*/
@@ -239,6 +244,11 @@ section {
   font-size: 1.4rem;
   font-weight: 600;
   color: #FF1E2D;
+}
+
+.how-it-works-image{
+  width: 400px;
+  height: auto;
 }
 
 /* Final Section */
