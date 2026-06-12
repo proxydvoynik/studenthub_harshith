@@ -1,0 +1,296 @@
+body {
+  margin: 0;
+}
+
+/* Typography */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Space Grotesk', sans-serif;
+  margin: 0;
+}
+
+p,
+a,
+li {
+  font-family: 'Cutive Mono', monospace;
+}
+
+section {
+  padding: 80px 20px;
+}
+
+/* Navbar */
+
+.container-navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 20px;
+  background: #000;
+  position: sticky;
+  top: 0;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  width: 200px;
+  color: #fff;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.logo-image {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.navbar-logo-text {
+  color: inherit;
+}
+
+.nav-links {
+  display: flex;
+  gap: 40px;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: #FF1E2D;
+}
+
+.explore-button a{
+  display: inline-block;
+  padding: 12px 30px;
+  border: 2px solid #fff;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: all 0.2s ease;
+}
+
+.explore-button a:hover {
+  background: #FF1E2D;
+  border-color: #FF1E2D;
+}
+
+/* Hero Section */
+
+.hero-section {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 80px 20px;
+  background: #000;
+  min-height: 620px;
+}
+
+.hero-content-text {
+  max-width: 550px;
+  color: #fff;
+}
+
+.hero-content-text h1 {
+  margin-bottom: 20px;
+  font-size: 3rem;
+  line-height: 1.1;
+}
+
+.hero-content-text p {
+  margin-bottom: 32px;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: #d1d1d1;
+}
+
+.hero-content-text a {
+  display: inline-block;
+  padding: 12px 30px;
+  border: 2px solid #fff;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: all 0.2s ease;
+}
+
+.features-button {
+  margin-right: 12px;
+}
+
+.features-button:hover {
+  background: #FF1E2D;
+  border-color: #FF1E2D;
+}
+
+.help-button:hover {
+  background: #FF1E2D;
+  border-color: #FF1E2D;
+}
+
+/*Features Section*/
+
+.features-section {
+  background: #111;
+  color: #fff;
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.feature-content-text {
+  max-width: 800px;
+  margin: 0 auto 60px;
+}
+
+.feature-content-text h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.feature-content-text p {
+  color: #d1d1d1;
+  line-height: 1.7;
+}
+
+.feature-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(300px, 450px));
+  justify-content: center;
+  gap: 30px;
+}
+
+.feature-card-1,
+.feature-card-2,
+.feature-card-3,
+.feature-card-4 {
+  padding: 30px;
+  border: 1px solid #222;
+  background: #181818;
+  border-radius: 12px;
+  text-align: left;
+}
+
+.feature-cards h2 {
+  margin: 20px 0 12px;
+}
+
+.feature-cards p {
+  color: #d1d1d1;
+  line-height: 1.6;
+}
+
+/* How It Works Section */
+
+.how-it-works-section {
+  background: #000;
+  color: #fff;
+  padding: 100px 20px;
+}
+
+.how-it-works-content-text {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 60px;
+}
+
+.how-it-works-content-text h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.how-it-works-content-text p {
+  color: #d1d1d1;
+  line-height: 1.7;
+}
+
+.how-it-works-cards {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 50px;
+}
+
+.how-it-works-card-1 {
+  max-width: 500px;
+}
+
+.how-it-works-card-1 ul {
+  list-style: none;
+  padding: 0;
+}
+
+.how-it-works-card-1 li {
+  margin-bottom: 15px;
+}
+
+.how-it-works-card-1 li:not(:has(p)) {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #FF1E2D;
+}
+
+/* Final Section */
+
+.final-section {
+  background: #111;
+  color: #fff;
+  text-align: center;
+  padding: 120px 20px;
+}
+
+.final-section h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.final-section p {
+  max-width: 750px;
+  margin: 0 auto 40px;
+  line-height: 1.7;
+  color: #d1d1d1;
+}
+
+.get-started-button {
+  display: inline-block;
+  padding: 14px 36px;
+  border: 2px solid #FF1E2D;
+  background: #FF1E2D;
+  color: white;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.get-started-button:hover {
+  transform: translateY(-2px);
+}
+
+/* Footer Section */
+
+.footer-section {
+  background: #000;
+  color: #888;
+  text-align: center;
+  padding: 40px 20px;
+  border-top: 1px solid #222;
+}
+
+.footer-section p {
+  margin-bottom: 10px;
+}
+
+.footer-section h4 {
+  color: #fff;
+  font-size: 1rem;
+}
