@@ -15,11 +15,40 @@
 - **Week 5** — JWT authentication & cloud deployment
 - **Week 6** — Dockerization, CI/CD, and final live demo
 
+---
+
+## Week 1 Progress — Responsive Landing Page
+
+### What was built
+
+A fully responsive landing page for StudentHub with the following sections:
+
+- **Navbar** — Sticky navigation bar with logo, page links, and an Explore button
+- **Hero Section** — Headline, description, and call-to-action buttons alongside a dashboard preview image
+- **Features Section** — Four feature cards (Task Management, Note Taking, Timetable, Study Habits) displayed in a grid
+- **How it Works Section** — Step-by-step breakdown using a definition list with an accompanying illustration
+- **CTA Section** — Final call-to-action encouraging users to get started
+- **Footer** — Copyright and credits
+
+### Tech used
+
+| Technology | Purpose |
+|---|---|
+| HTML5 | Page structure and content |
+| CSS3 | Styling, layout (Flexbox + Grid), and responsive design |
+
+
+### Demo
+
+https://github.com/proxydvoynik/studenthub_harshith/tree/main/assests/week1-progress-video.mp4
+
+---
+
 ## Author
 
 **Harshith Saveesh**
 MIT CSE
 
-***
+---
 
-> Built with 💻 as part of ISTE Summer Camp — Week 1 Submission
+> Project built as part of ISTE Summer Camp — Week 1 Submission
