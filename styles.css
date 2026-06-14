@@ -12,12 +12,14 @@
   --font-body: 'Cutive Mono', monospace;
 }
 
-
 /* ── Reset ── */
 body {
   margin: 0;
 }
-
+img {
+  max-width: 100%;
+  height: auto;
+}
 
 /* ── Typography ── */
 h1, h2, h3, h4, h5, h6 {
@@ -27,7 +29,6 @@ h1, h2, h3, h4, h5, h6 {
 p, a, li, dd {
   font-family: var(--font-body);
 }
-
 
 /* ── Shared Button Base ── */
 .explore-button a,
@@ -269,4 +270,102 @@ p, a, li, dd {
 .footer-section h4 {
   color: var(--clr-text);
   font-size: 1rem;
+}
+
+
+@media (max-width: 768px) {
+
+  /* ── Navbar ── */
+  .container-navbar {
+    flex-direction: column;
+    padding: 14px 16px;
+    gap: 12px;
+  }
+  .navbar-logo {
+    width: auto;
+    font-size: 18px;
+  }
+  .logo-image {
+    width: 36px;
+    height: 36px;
+    margin-right: 6px;
+  }
+  .nav-links {
+    gap: 20px;
+    padding-top: 12px;
+    border-top: 1px solid var(--clr-border);
+  }
+  .nav-links a {
+    font-size: 14px;
+  }
+  .explore-button a {
+    padding: 8px 18px;
+    font-size: 0.9rem;
+  }
+
+
+  /* ── Hero Section ── */
+  .hero-section {
+    flex-direction: column;
+    text-align: center;
+    padding: 50px 20px;
+    min-height: auto;
+    gap: 40px;
+  }
+  .hero-content-text h1 {
+    font-size: 2.2rem;
+  }
+  .hero-content-text p {
+    font-size: 1rem;
+  }
+  .hero-content-text a {
+    padding: 10px 22px;
+    font-size: 0.95rem;
+  }
+  .hero-image {
+    width: 280px;
+  }
+
+
+  /* ── Features Section ── */
+  .features-section {
+    padding: 60px 20px;
+  }
+  .feature-content-text h1 {
+    font-size: 2.2rem;
+  }
+  .feature-cards {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+
+  /* ── How It Works Section ── */
+  .how-it-works-section {
+    padding: 60px 20px;
+  }
+  .how-it-works-content-text h1 {
+    font-size: 2.2rem;
+  }
+  .how-it-works-cards {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .how-it-works-image {
+    width: 280px;
+  }
+
+
+  /* ── Final Section ── */
+  .final-section {
+    padding: 70px 20px;
+  }
+  .final-section h1 {
+    font-size: 2.2rem;
+  }
+  .get-started-button {
+    padding: 12px 28px;
+    font-size: 1rem;
+  }
 }
