@@ -40,7 +40,7 @@ A fully responsive landing page for StudentHub with the following sections:
 
 ### Demo
 
-https://github.com/proxydvoynik/studenthub_harshith/tree/main/assests/week1-progress-video.mp4
+https://github.com/user-attachments/assets/3e210ee6-1148-4533-a180-45d8f66f4756
 
 ---
 
