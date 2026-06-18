@@ -42,7 +42,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
 }
 
-/* ── Main Dashboard Outer Grid Layout ── */
+/* ── Main Dashboard ── */
 .dashboard-grid {
   display: grid;
   grid-template-columns: 280px 1fr 340px;
@@ -60,7 +60,7 @@ h1, h2, h3, h4, h5, h6 {
   gap: 16px;
 }
 
-/* ── Card Panel Container (Matches index.css Style) ── */
+/* ── Card Panel Container ── */
 .panel {
   background: var(--clr-bg-card);
   border: 1px solid var(--clr-border);
@@ -139,23 +139,6 @@ summary {
 
 summary::-webkit-details-marker {
   display: none;
-}
-
-/* Custom Rotating Caret Arrow */
-.caret {
-  display: inline-block;
-  margin-right: 8px;
-  transition: transform 0.2s ease;
-  font-size: 0.8rem;
-  color: var(--clr-text-secondary);
-}
-
-details[open] summary .caret {
-  transform: rotate(90deg);
-}
-
-details[open] summary {
-  color: var(--clr-text);
 }
 
 .folder-icon {
@@ -250,7 +233,7 @@ details[open] summary {
   flex: 1;
 }
 
-/* Cozy Wallpaper Banner */
+/* Wallpaper Banner */
 .wallpaper-container {
   position: relative;
   height: 160px;
@@ -479,7 +462,7 @@ details[open] summary {
 
 /* ==================== MEDIA QUERIES (RESPONSIVE VIEWPORT) ==================== */
 
-/* Desktop viewports — Lock body to screen height and hide scrollbars */
+/* Desktop viewports */
 @media (min-width: 1025px) {
   body {
     height: 100vh;
@@ -499,7 +482,7 @@ details[open] summary {
   }
 }
 
-/* Tablet & Mobile viewports — Single column layout with scrolling */
+/* Tablet & Mobile viewports */
 @media (max-width: 1024px) {
   body {
     height: auto;
