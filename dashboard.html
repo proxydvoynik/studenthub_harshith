@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="StudentHub Dashboard — Manage your subjects, notes, class timetable, habit tracking, and exam tasks in one custom workplace.">
+    <title>StudentHub — Workspace</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cutive+Mono&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles/dashboard.css">
+</head>
+<body>
+
+    <!-- Main Dashboard Outer Grid -->
+    <div class="dashboard-grid">
+        <!-- ==================== LEFT COLUMN ==================== -->
+        <div class="column left-column">
+            
+            <!-- Folder Notes Panel -->
+            <div class="panel notes-panel">
+                <div class="panel-header">
+                    <h3>Notes & Files</h3>
+                    <div class="panel-actions">
+                        <button class="small-icon-btn" title="New Note">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+	                            <path d="M0 0h24v24H0z" fill="none" />
+	                            <path fill="currentColor" d="M17.5 21h1v-2.5H21v-1h-2.5V15h-1v2.5H15v1h2.5zm.5 2q-2.075 0-3.537-1.463T13 18t1.463-3.537T18 13t3.538 1.463T23 18t-1.463 3.538T18 23M7 9h10V7H7zm4.675 12H5q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h14q.825 0 1.413.588T21 5v6.7q-.725-.35-1.463-.525T18 11q-.275 0-.513.012t-.487.063V11H7v2h6.125q-.45.425-.812.925T11.675 15H7v2h4.075q-.05.25-.062.488T11 18q0 .825.15 1.538T11.675 21" />
+                            </svg>
+                        </button>
+                        <button class="small-icon-btn" title="New Folder">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+	                            <path d="M0 0h24v24H0z" fill="none" />
+	                            <path fill="currentColor" d="M14 16h2v-2h2v-2h-2v-2h-2v2h-2v2h2zM4 20q-.825 0-1.412-.587T2 18V6q0-.825.588-1.412T4 4h6l2 2h8q.825 0 1.413.588T22 8v10q0 .825-.587 1.413T20 20z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="panel-body folder-tree">
+                    <!-- Academics Folder -->
+                    <details open>
+                        <summary>
+                            <span class="caret"></span>
+                            <span class="folder-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24">
+	<path fill="currentColor" d="M4 20q-.825 0-1.412-.587T2 18V6q0-.825.588-1.412T4 4h6l2 2h8q.825 0 1.413.588T22 8v10q0 .825-.587 1.413T20 20z" />
+</svg>
+
+</span>
+                            <span class="folder-name">Academics</span>
+                        </summary>
+                        <div class="folder-content">
+                            <a href="#" class="file-item active">
+                                <span class="file-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24">
+	                                                        <path fill="currentColor" d="M6 22q-.825 0-1.412-.587T4 20V4q0-.825.588-1.412T6 2h8l6 6v12q0 .825-.587 1.413T18 22zm7-13h5l-5-5z" />
+                                                        </svg>
+                                </span>
+                                <span class="file-name">Semester_Planning.md</span>
+                            </a>
+                        </div>
+                    </details>
+                </div>
+            </div>
+
+            <!-- Assignments & Exams Panel -->
+            <div class="panel assignments-panel">
+                <div class="panel-header">
+                    <h3>Assignments & Exams</h3>
+                    <button class="small-icon-btn" title="Add Task">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+	                        <path fill="currentColor" d="M11.288 20.713Q11 20.425 11 20v-7H4q-.425 0-.712-.288T3 12t.288-.712T4 11h7V4q0-.425.288-.712T12 3t.713.288T13 4v7h7q.425 0 .713.288T21 12t-.288.713T20 13h-7v7q0 .425-.288.713T12 21t-.712-.288" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="panel-body">
+                    <div class="task-list">
+                        <!-- Task 1 -->
+                        <div class="task-item">
+                            <div class="task-info">
+                                <h4 class="task-title">Math Assignment 3</h4>
+                                <span class="task-deadline">Due: Today, 11:59 PM</span>
+                            </div>
+                            <span class="tag assignment">Assignment</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+        <!-- ==================== MIDDLE COLUMN ==================== -->
+        <div class="column middle-column">
+            
+            <!-- Wallpaper Banner Header -->
+            <div class="wallpaper-container">
+                <video autoplay loop muted playsinline class="wallpaper-img" poster="assets/dashboard-wallpaper.png">
+                    <source src="assets/desktop-wallpaper.mp4" type="video/mp4">
+                </video>
+                <div class="wallpaper-overlay">
+                    <h1>Dashboard</h1>
+                    <div class="glow-accent-line"></div>
+                </div>
+            </div>
+
+            <!-- Timetable Panel -->
+            <div class="panel timetable-panel">
+                <div class="panel-header">
+                    <h3>Weekly Class Timetable</h3>
+                </div>
+                <div class="panel-body table-responsive">
+                    <table class="timetable">
+                        <thead>
+                            <tr>
+                                <th>Day</th>
+                                <th>8-9</th>
+                                <th>9-10</th>
+                                <th>10-11</th>
+                                <th>11-12</th>
+                                <th>12-13</th>
+                                <th>13-14</th>
+                                <th>14-15</th>
+                                <th>15-16</th>
+                                <th>16-16:30</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Monday -->
+                            <tr>
+                                <td class="day-col">Mon</td>
+                                <td><div class="class-card"><div class="class-subject">Sub 1</div><div class="class-room">AB 1</div></div></td>
+                                <td><div class="class-card"><div class="class-subject">Sub 3</div><div class="class-room">AB 3</div></div></td>
+                                <td><div class="class-card"><div class="class-subject">Sub 5</div><div class="class-room">AB 5</div></div></td>
+                                <td><div class="class-card free">Free</div></td>
+                                <td><div class="class-card free">Lunch</div></td>
+                                <td><div class="class-card"><div class="class-subject">Sub 2</div><div class="class-room">AB 2</div></div></td>
+                                <td><div class="class-card free">Free</div></td>
+                                <td><div class="class-card"><div class="class-subject">Sub 4</div><div class="class-room">AB 4</div></div></td>
+                                <td><div class="class-card free">Free</div></td>
+                            </tr>
+                            <!-- Tuesday -->
+                            <tr>
+                                <td class="day-col">Tue</td>
+                                <td><div class="class-card"><div class="class-subject">Sub 2</div><div class="class-room">AB 2</div></div></td>
+                                <td><div class="class-card"><div class="class-subject">Sub 4</div><div class="class-room">AB 4</div></div></td>
+                                <td><div class="class-card free">Free</div></td>
+                                <td><div class="class-card"><div class="class-subject">Sub 1</div><div class="class-room">AB 1</div></div></td>
+                                <td><div class="class-card free">Lunch</div></td>
+                                <td><div class="class-card free">Free</div></td>
+                                <td><div class="class-card"><div class="class-subject">Sub 3</div><div class="class-room">AB 3</div></div></td>
+                                <td><div class="class-card free">Free</div></td>
+                                <td><div class="class-card free">Free</div></td>
+                            </tr>
+                            <!-- Wednesday -->
+                            <tr>
+                                <td class="day-col">Wed</td>
+                                <td><div class="class-card"><div class="class-subject">Sub 1</div><div class="class-room">AB 1</div></div></td>
+                                <td><div class="class-card"><div class="class-subject">Sub 3</div><div class="class-room">AB 3</div></div></td>
+                                <td><div class="class-card"><div class="class-subject">Sub 5</div><div class="class-room">AB 5</div></div></td>
+                                <td><div class="class-card free">Free</div></td>
+                                <td><div class="class-card free">Lunch</div></td>
+                                <td><div class="class-card"><div class="class-subject">Sub 2</div><div class="class-room">AB 2</div></div></td>
+                                <td><div class="class-card free">Free</div></td>
+                                <td><div class="class-card"><div class="class-subject">Sub 4</div><div class="class-room">AB 4</div></div></td>
+                                <td><div class="class-card free">Free</div></td>
+                            </tr>
+                            <!-- Thursday -->
+                            <tr>
+                                <td class="day-col">Thu</td>
+                                <td><div class="class-card"><div class="class-subject">Sub 2</div><div class="class-room">AB 2</div></div></td>
+                                <td><div class="class-card"><div class="class-subject">Sub 4</div><div class="class-room">AB 4</div></div></td>
+                                <td><div class="class-card free">Free</div></td>
+                                <td><div class="class-card"><div class="class-subject">Sub 1</div><div class="class-room">AB 1</div></div></td>
+                                <td><div class="class-card free">Lunch</div></td>
+                                <td><div class="class-card free">Free</div></td>
+                                <td><div class="class-card"><div class="class-subject">Sub 3</div><div class="class-room">AB 3</div></div></td>
+                                <td><div class="class-card free">Free</div></td>
+                                <td><div class="class-card free">Free</div></td>
+                            </tr>
+                            <!-- Friday -->
+                            <tr>
+                                <td class="day-col">Fri</td>
+                                <td><div class="class-card free">Free</div></td>
+                                <td><div class="class-card free">Free</div></td>
+                                <td><div class="class-card free">Free</div></td>
+                                <td><div class="class-card free">Free</div></td>
+                                <td><div class="class-card free">Lunch</div></td>
+                                <td><div class="class-card free">Free</div></td>
+                                <td><div class="class-card free">Free</div></td>
+                                <td><div class="class-card free">Free</div></td>
+                                <td><div class="class-card free">Free</div></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ==================== RIGHT COLUMN ==================== -->
+        <div class="column right-column">
+            
+            <!-- Habits Tracker Panel -->
+            <div class="panel habits-panel">
+                <div class="panel-header">
+                    <h3>Weekly Habits</h3>
+                    <button class="small-icon-btn" title="Add Habit">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    </button>
+                </div>
+                <div class="panel-body">
+                    <div class="habit-tracker">
+                        <div class="habit-header-days">
+                            <span class="habit-name-placeholder">Habit</span>
+                            <span>M</span>
+                            <span>T</span>
+                            <span>W</span>
+                            <span>T</span>
+                            <span>F</span>
+                            <span>S</span>
+                            <span>S</span>
+                        </div>
+                        
+                        <!-- Habit 1 -->
+                        <div class="habit-row">
+                            <span class="habit-title" title="Read 10 Pages">Read 10 pgs</span>
+                            <label class="circle-check checked"><input type="checkbox" checked disabled><span></span></label>
+                            <label class="circle-check checked"><input type="checkbox" checked disabled><span></span></label>
+                            <label class="circle-check unchecked"><input type="checkbox" disabled><span></span></label>
+                            <label class="circle-check checked"><input type="checkbox" checked disabled><span></span></label>
+                            <label class="circle-check unchecked"><input type="checkbox" disabled><span></span></label>
+                            <label class="circle-check unchecked"><input type="checkbox" disabled><span></span></label>
+                            <label class="circle-check unchecked"><input type="checkbox" disabled><span></span></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quotes Panel -->
+            <div class="panel quotes-panel">
+                <div class="panel-header">
+                    <h3>Daily Quotes</h3>
+                    <button class="small-icon-btn" title="New Quote">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+	                        <path fill="currentColor" d="M14.8 14.525q1.225-.975 1.575-2.525H14.3q-.3.675-.925 1.088T12 13.5t-1.375-.413T9.7 12H7.625q.35 1.55 1.575 2.525t2.8.975t2.8-.975m-4.662-4.387q.362-.363.362-.888t-.363-.888T9.25 8t-.888.363T8 9.25t.363.888t.887.362t.888-.363m5.5 0Q16 9.776 16 9.25t-.363-.888T14.75 8t-.888.363t-.362.887t.363.888t.887.362t.888-.363M12 21l-1.45-1.25q-2.525-2.2-4.175-3.8T3.75 13.075t-1.362-2.35T2 8.5q0-2.35 1.575-3.925T7.5 3q1.3 0 2.475.55T12 5.1q.85-1 2.025-1.55T16.5 3q2.35 0 3.925 1.575T22 8.5q0 1.15-.387 2.225t-1.363 2.35t-2.625 2.875t-4.175 3.8z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="panel-body">
+                    <p class="quote">Quote</p>
+                    <p class="author">- Author</p>
+                </div>
+            </div>
+
+            <!-- Calendar Widget Panel -->
+            <div class="panel calendar-panel">
+                <div class="panel-header">
+                    <div class="calendar-month-year">June 2026</div>
+                </div>
+                <div class="panel-body">
+                    <div class="calendar-grid">
+                        <!-- Week headers -->
+                        <span class="day-header">Mo</span>
+                        <span class="day-header">Tu</span>
+                        <span class="day-header">We</span>
+                        <span class="day-header">Th</span>
+                        <span class="day-header">Fr</span>
+                        <span class="day-header">Sa</span>
+                        <span class="day-header">Su</span>
+
+                        <!-- Days of June (Starts on Monday) -->
+                        <span class="calendar-day">1</span>
+                        <span class="calendar-day">2</span>
+                        <span class="calendar-day">3</span>
+                        <span class="calendar-day">4</span>
+                        <span class="calendar-day">5</span>
+                        <span class="calendar-day">6</span>
+                        <span class="calendar-day">7</span>
+                        <span class="calendar-day">8</span>
+                        <span class="calendar-day">9</span>
+                        <span class="calendar-day">10</span>
+                        <span class="calendar-day">11</span>
+                        <span class="calendar-day">12</span>
+                        <span class="calendar-day">13</span>
+                        <span class="calendar-day">14</span>
+                        <span class="calendar-day">15</span>
+                        <span class="calendar-day">16</span>
+                        <span class="calendar-day">17</span>
+                        <span class="calendar-day">18</span>
+                        <span class="calendar-day">19</span>
+                        <span class="calendar-day">20</span>
+                        <span class="calendar-day">21</span>
+                        <span class="calendar-day">22</span>
+                        <span class="calendar-day">23</span>
+                        <span class="calendar-day">24</span>
+                        <span class="calendar-day">25</span>
+                        <span class="calendar-day">26</span>
+                        <span class="calendar-day">27</span>
+                        <span class="calendar-day">28</span>
+                        <span class="calendar-day">29</span>
+                        <span class="calendar-day">30</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
