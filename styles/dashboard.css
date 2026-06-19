@@ -4,16 +4,12 @@
   --clr-bg-card: #181818;
   --clr-border: #222222;
   --clr-accent: #FF1E2D;
-  --clr-accent-purple: #bd28ff;
-  
   --clr-text: #ffffff;
   --clr-text-muted: #d1d1d1;
   --clr-text-secondary: #888888;
   
   --font-heading: 'Space Grotesk', sans-serif;
   --font-body: 'Cutive Mono', monospace;
-  
-  --glow-shadow: 0 0 12px rgba(255, 30, 45, 0.2);
 }
 
 /* ── Reset & Global Rules ── */
@@ -42,14 +38,13 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
 }
 
-/* ── Main Dashboard ── */
+/* ── Main Dashboard Layout ── */
 .dashboard-grid {
   display: grid;
   grid-template-columns: 280px 1fr 340px;
   gap: 16px;
   padding: 16px;
   flex: 1;
-  max-width: 1800px;
   width: 100%;
   margin: 0 auto;
 }
@@ -60,7 +55,7 @@ h1, h2, h3, h4, h5, h6 {
   gap: 16px;
 }
 
-/* ── Card Panel Container ── */
+/* ── Panel Card Container ── */
 .panel {
   background: var(--clr-bg-card);
   border: 1px solid var(--clr-border);
@@ -85,14 +80,6 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 0.5px;
   text-transform: uppercase;
   color: var(--clr-text);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.panel-actions {
-  display: flex;
-  gap: 6px;
 }
 
 .small-icon-btn {
@@ -112,7 +99,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ==================== LEFT COLUMN: NOTES & EXAMS ==================== */
-
 .notes-panel {
   flex: 1;
 }
@@ -178,7 +164,7 @@ summary::-webkit-details-marker {
 
 /* Assignments & Exams Task List */
 .assignments-panel {
-  max-height: 350px;
+  flex: 1.5;
 }
 
 .task-list {
@@ -221,14 +207,10 @@ summary::-webkit-details-marker {
   font-weight: bold;
   text-transform: uppercase;
   border: 1px solid var(--clr-border);
-}
-
-.tag.assignment {
   color: var(--clr-accent);
 }
 
 /* ==================== MIDDLE COLUMN: MAIN CONTENT ==================== */
-
 .middle-column {
   flex: 1;
 }
@@ -289,66 +271,53 @@ summary::-webkit-details-marker {
 
 .timetable {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 6px;
   min-width: 800px;
 }
 
-.timetable th, .timetable td {
-  border: 1px solid var(--clr-border);
-  padding: 12px;
-  text-align: center;
+.timetable th {
+  padding: 6px;
+  font-family: var(--font-heading);
+  font-weight: normal;
+  color: var(--clr-text-muted);
   font-size: 0.85rem;
 }
 
-.timetable th {
+.timetable td {
   background: #111111;
-  color: var(--clr-text-muted);
-  font-family: var(--font-heading);
-  font-weight: normal;
+  border: 1px solid var(--clr-border);
+  border-radius: 8px;
+  padding: 10px;
+  height: 70px;
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--clr-text);
+  vertical-align: middle;
 }
 
-.timetable th:first-child,
 .timetable td.day-col {
-  background: #111111;
+  background: transparent;
+  border: none;
   font-family: var(--font-heading);
   font-weight: 500;
   color: var(--clr-text);
   white-space: nowrap;
 }
 
-/* Class slot cards */
-.class-card {
-  background: #111111;
-  border: 1px solid var(--clr-border);
-  border-radius: 8px;
-  padding: 10px;
-  min-height: 70px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.class-subject {
-  font-size: 0.82rem;
-  font-weight: 500;
-  margin-bottom: 6px;
-  color: var(--clr-text);
-  line-height: 1.2;
-}
-
-.class-room {
+.timetable td span.room {
+  display: block;
   font-size: 0.72rem;
   color: var(--clr-text-secondary);
+  margin-top: 4px;
 }
 
-.class-card.free {
+.timetable td.free {
   opacity: 0.4;
   border-style: dashed;
 }
 
 /* ==================== RIGHT COLUMN: HABITS & CALENDAR ==================== */
-
-/* Habits checklist block */
 .habits-panel {
   flex: 1;
 }
@@ -356,60 +325,50 @@ summary::-webkit-details-marker {
 .habit-tracker {
   display: flex;
   flex-direction: column;
-  gap: 12px;
 }
 
-.habit-header-days {
+.habit-header, .habit-row {
   display: grid;
-  grid-template-columns: 1fr repeat(7, 26px);
-  gap: 4px;
+  grid-template-columns: 1fr repeat(7, 22px);
+  gap: 2px;
+  align-items: center;
   text-align: center;
+}
+
+.habit-header {
   font-size: 0.72rem;
   color: var(--clr-text-secondary);
   border-bottom: 1px solid var(--clr-border);
   padding-bottom: 6px;
+  margin-bottom: 12px;
 }
 
-.habit-name-placeholder {
+.habit-header span:first-child {
   text-align: left;
-}
-
-.habit-row {
-  display: grid;
-  grid-template-columns: 1fr repeat(7, 26px);
-  gap: 4px;
-  align-items: center;
-  text-align: center;
 }
 
 .habit-title {
   text-align: left;
   font-size: 0.8rem;
   color: var(--clr-text-muted);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
-/* Circle checkbox indicators */
-.circle-check input {
-  display: none;
-}
-
-.circle-check span {
+.habit-row input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
   width: 12px;
   height: 12px;
   border-radius: 50%;
   border: 1px solid var(--clr-border);
-  display: inline-block;
+  outline: none;
+  background: transparent;
 }
 
-.circle-check.checked span {
+.habit-row input[type="checkbox"]:checked {
   background: var(--clr-accent);
   border-color: var(--clr-accent);
 }
 
-/* Quotes Panel */
 .quotes-panel p.quote {
   font-style: italic;
   font-size: 0.9rem;
@@ -424,7 +383,6 @@ summary::-webkit-details-marker {
   text-align: right;
 }
 
-/* Calendar Widget */
 .calendar-panel {
   flex: 1.2;
 }
@@ -450,11 +408,9 @@ summary::-webkit-details-marker {
   padding-bottom: 6px;
 }
 
-.calendar-day {
+.calendar-grid span {
   font-size: 0.78rem;
   padding: 4px 0;
-  border-radius: 4px;
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -510,10 +466,5 @@ summary::-webkit-details-marker {
   
   .wallpaper-overlay h1 {
     font-size: 1.6rem;
-  }
-  
-  .class-card {
-    padding: 6px 4px;
-    min-height: auto;
   }
 }
