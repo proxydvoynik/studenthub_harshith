@@ -28,8 +28,8 @@ body {
   flex-direction: column;
   overflow-x: hidden;
   background-image: 
-    radial-gradient(at 10% 20%, rgba(255, 30, 45, 0.03) 0px, transparent 50%),
-    radial-gradient(at 90% 80%, rgba(255, 30, 45, 0.03) 0px, transparent 50%);
+    radial-gradient(at 10% 20%, rgba(255, 30, 45, 0.03), transparent 50%),
+    radial-gradient(at 90% 80%, rgba(255, 30, 45, 0.03), transparent 50%);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -98,7 +98,7 @@ h1, h2, h3, h4, h5, h6 {
   overflow-y: auto;
 }
 
-/* ==================== LEFT COLUMN: NOTES & EXAMS ==================== */
+/* ── Left Sidebar (Notes & Assignments) ── */
 .notes-panel {
   flex: 1;
 }
@@ -164,8 +164,10 @@ summary::-webkit-details-marker {
 
 /* Assignments & Exams Task List */
 .assignments-panel {
-  flex: 1.5;
+  flex: 1.5; /* Flex increased to make it longer than notes folder section */
 }
+
+
 
 .task-list {
   display: flex;
@@ -175,28 +177,50 @@ summary::-webkit-details-marker {
 
 .task-item {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 10px;
   padding: 10px;
   background: #111111;
   border: 1px solid var(--clr-border);
   border-radius: 8px;
 }
 
+.task-check-btn, .task-delete-btn {
+  background: transparent;
+  border: none;
+  color: var(--clr-text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  padding: 0;
+  transition: color 0.15s ease;
+}
+
+.task-check-btn:hover, .task-check-btn.checked {
+  color: var(--clr-accent);
+}
+
+.task-delete-btn:hover {
+  color: var(--clr-accent);
+}
+
 .task-info {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 2px;
 }
 
 .task-title {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 500;
   color: var(--clr-text);
 }
 
 .task-deadline {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   color: var(--clr-text-secondary);
 }
 
@@ -210,12 +234,22 @@ summary::-webkit-details-marker {
   color: var(--clr-accent);
 }
 
-/* ==================== MIDDLE COLUMN: MAIN CONTENT ==================== */
+.task-item.completed .task-title {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+.task-item.completed .task-deadline,
+.task-item.completed .tag {
+  opacity: 0.5;
+}
+
+/* ── Middle Workspace (Banner & Timetable) ── */
 .middle-column {
   flex: 1;
 }
 
-/* Wallpaper Banner */
+/* Cozy Wallpaper Banner */
 .wallpaper-container {
   position: relative;
   height: 160px;
@@ -317,7 +351,7 @@ summary::-webkit-details-marker {
   border-style: dashed;
 }
 
-/* ==================== RIGHT COLUMN: HABITS & CALENDAR ==================== */
+/* ── Right Sidebar (Habits & Calendar) ── */
 .habits-panel {
   flex: 1;
 }
@@ -329,8 +363,8 @@ summary::-webkit-details-marker {
 
 .habit-header, .habit-row {
   display: grid;
-  grid-template-columns: 1fr repeat(7, 22px);
-  gap: 2px;
+  grid-template-columns: 1fr repeat(7, 24px) 24px;
+  gap: 4px;
   align-items: center;
   text-align: center;
 }
@@ -353,11 +387,12 @@ summary::-webkit-details-marker {
   color: var(--clr-text-muted);
 }
 
+/* Native checkboxes styled as circular icons */
 .habit-row input[type="checkbox"] {
   appearance: none;
   -webkit-appearance: none;
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   border: 1px solid var(--clr-border);
   outline: none;
@@ -367,6 +402,23 @@ summary::-webkit-details-marker {
 .habit-row input[type="checkbox"]:checked {
   background: var(--clr-accent);
   border-color: var(--clr-accent);
+}
+
+.habit-delete-btn {
+  background: transparent;
+  border: none;
+  color: var(--clr-text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  padding: 0;
+  transition: color 0.15s ease;
+}
+
+.habit-delete-btn:hover {
+  color: var(--clr-accent);
 }
 
 .quotes-panel p.quote {
@@ -383,40 +435,159 @@ summary::-webkit-details-marker {
   text-align: right;
 }
 
-.calendar-panel {
+.extra-panel {
   flex: 1.2;
 }
 
-.calendar-month-year {
-  font-family: var(--font-heading);
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--clr-accent);
-}
-
-.calendar-grid {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 8px 4px;
-  text-align: center;
-  margin-top: 12px;
-}
-
-.day-header {
-  font-size: 0.72rem;
-  color: var(--clr-text-secondary);
-  padding-bottom: 6px;
-}
-
-.calendar-grid span {
-  font-size: 0.78rem;
-  padding: 4px 0;
+/* ── Modal Dialog ── */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1000;
+  transition: opacity 0.2s ease;
 }
 
-/* ==================== MEDIA QUERIES (RESPONSIVE VIEWPORT) ==================== */
+.modal-content {
+  background: var(--clr-bg-card);
+  border: 1px solid var(--clr-border);
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: modalSlideIn 0.2s ease;
+}
+
+@keyframes modalSlideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--clr-border);
+  background: #111111;
+}
+
+.modal-header h3 {
+  font-size: 1.1rem;
+  color: var(--clr-text);
+  font-family: var(--font-heading);
+}
+
+.modal-close-btn {
+  background: transparent;
+  border: none;
+  color: var(--clr-text-secondary);
+  font-size: 1.5rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.modal-close-btn:hover {
+  color: var(--clr-accent);
+}
+
+.modal-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  color: var(--clr-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-group input,
+.form-group select {
+  background: #111111;
+  border: 1px solid var(--clr-border);
+  color: var(--clr-text);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  padding: 8px 12px;
+  border-radius: 6px;
+  outline: none;
+  width: 100%;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: var(--clr-accent);
+}
+
+.modal-footer {
+  padding: 16px 20px;
+  border-top: 1px solid var(--clr-border);
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  background: #111111;
+}
+
+.modal-btn {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.modal-btn.primary {
+  background: var(--clr-accent);
+  border: 1px solid var(--clr-accent);
+  color: var(--clr-text);
+}
+
+.modal-btn.primary:hover {
+  background: transparent;
+  color: var(--clr-accent);
+}
+
+.modal-btn.secondary {
+  background: transparent;
+  border: 1px solid var(--clr-border);
+  color: var(--clr-text-muted);
+}
+
+.modal-btn.secondary:hover {
+  border-color: var(--clr-text-muted);
+  color: var(--clr-text);
+}
+
+/* ── Responsive Viewports ── */
 
 /* Desktop viewports */
 @media (min-width: 1025px) {
