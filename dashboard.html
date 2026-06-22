@@ -101,89 +101,31 @@
             <div class="panel timetable-panel">
                 <div class="panel-header">
                     <h3>Weekly Class Timetable</h3>
+                    <button class="small-icon-btn" title="Add Class" id="open-timetable-modal-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+                            <path fill="currentColor" d="M11.288 20.713Q11 20.425 11 20v-7H4q-.425 0-.712-.288T3 12t.288-.712T4 11h7V4q0-.425.288-.712T12 3t.713.288T13 4v7h7q.425 0 .713.288T21 12t-.288.713T20 13h-7v7q0 .425-.288.713T12 21t-.712-.288" />
+                        </svg>
+                    </button>
                 </div>
                 <div class="panel-body table-responsive">
                     <table class="timetable">
                         <thead>
                             <tr>
                                 <th>Day</th>
-                                <th>8-9</th>
-                                <th>9-10</th>
-                                <th>10-11</th>
-                                <th>11-12</th>
-                                <th>12-13</th>
-                                <th>13-14</th>
-                                <th>14-15</th>
-                                <th>15-16</th>
-                                <th>16-16:30</th>
+                                <th>08.00 - 09.00</th>
+                                <th>09.00 - 10.00</th>
+                                <th>10.00 - 10.30</th>
+                                <th>10.30 - 11.30</th>
+                                <th>11.30 - 12.30</th>
+                                <th>12.30 - 01.00</th>
+                                <th>01.00 - 02.00</th>
+                                <th>02.00 - 03.00</th>
+                                <th>03.00 - 03.30</th>
+                                <th>03.30 - 04.30</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <!-- Monday -->
-                            <tr>
-                                <td class="day-col">Mon</td>
-                                <td>Sub 1 <span class="room">AB 1</span></td>
-                                <td>Sub 3 <span class="room">AB 3</span></td>
-                                <td>Sub 5 <span class="room">AB 5</span></td>
-                                <td class="free">Free</td>
-                                <td class="free">Lunch</td>
-                                <td>Sub 2 <span class="room">AB 2</span></td>
-                                <td class="free">Free</td>
-                                <td>Sub 4 <span class="room">AB 4</span></td>
-                                <td class="free">Free</td>
-                            </tr>
-                            <!-- Tuesday -->
-                            <tr>
-                                <td class="day-col">Tue</td>
-                                <td>Sub 2 <span class="room">AB 2</span></td>
-                                <td>Sub 4 <span class="room">AB 4</span></td>
-                                <td class="free">Free</td>
-                                <td>Sub 1 <span class="room">AB 1</span></td>
-                                <td class="free">Lunch</td>
-                                <td class="free">Free</td>
-                                <td>Sub 3 <span class="room">AB 3</span></td>
-                                <td class="free">Free</td>
-                                <td class="free">Free</td>
-                            </tr>
-                            <!-- Wednesday -->
-                            <tr>
-                                <td class="day-col">Wed</td>
-                                <td>Sub 1 <span class="room">AB 1</span></td>
-                                <td>Sub 3 <span class="room">AB 3</span></td>
-                                <td>Sub 5 <span class="room">AB 5</span></td>
-                                <td class="free">Free</td>
-                                <td class="free">Lunch</td>
-                                <td>Sub 2 <span class="room">AB 2</span></td>
-                                <td class="free">Free</td>
-                                <td>Sub 4 <span class="room">AB 4</span></td>
-                                <td class="free">Free</td>
-                            </tr>
-                            <!-- Thursday -->
-                            <tr>
-                                <td class="day-col">Thu</td>
-                                <td>Sub 2 <span class="room">AB 2</span></td>
-                                <td>Sub 4 <span class="room">AB 4</span></td>
-                                <td class="free">Free</td>
-                                <td>Sub 1 <span class="room">AB 1</span></td>
-                                <td class="free">Lunch</td>
-                                <td class="free">Free</td>
-                                <td>Sub 3 <span class="room">AB 3</span></td>
-                                <td class="free">Free</td>
-                                <td class="free">Free</td>
-                            </tr>
-                            <!-- Friday -->
-                            <tr>
-                                <td class="day-col">Fri</td>
-                                <td class="free">Free</td>
-                                <td class="free">Free</td>
-                                <td class="free">Free</td>
-                                <td class="free">Free</td>
-                                <td class="free">Lunch</td>
-                                <td class="free">Free</td>
-                                <td class="free">Free</td>
-                                <td class="free">Free</td>
-                                <td class="free">Free</td>
-                            </tr>
+                        <tbody id="timetable-body">
+                            <!-- Rendered dynamically by timetable.js -->
                         </tbody>
                     </table>
                 </div>
@@ -227,16 +169,16 @@
             <!-- Will be implemented later -->
             <div class="panel quotes-panel">
                 <div class="panel-header">
-                    <h3>Quotes</h3>
-                    <button class="small-icon-btn" title="New Quote" id="new-quote-btn">
+                    <h3>Daily Quotes</h3>
+                    <button class="small-icon-btn" title="New Quote">
                         <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
-	                        <path fill="currentColor" d="M14.8 14.525q1.225-.975 1.575-2.525H14.3q-.3.675-.925 1.088T12 13.5t-1.375-.413T9.7 12H7.625q.35 1.55 1.575 2.525t2.8.975t2.8-.975m-4.662-4.387q.362-.363.362-.888t-.363-.888T9.25 8t-.888.363T8 9.25t.363.888t.887.362t.888-.363M12 21l-1.45-1.25q-2.525-2.2-4.175-3.8T3.75 13.075t-1.362-2.35T2 8.5q0-2.35 1.575-3.925T7.5 3q1.3 0 2.475.55T12 5.1q.85-1 2.025-1.55T16.5 3q2.35 0 3.925 1.575T22 8.5q0 1.15-.387 2.225t-1.363 2.35t-2.625 2.875t-4.175 3.8z" />
+	                        <path fill="currentColor" d="M14.8 14.525q1.225-.975 1.575-2.525H14.3q-.3.675-.925 1.088T12 13.5t-1.375-.413T9.7 12H7.625q.35 1.55 1.575 2.525t2.8.975t2.8-.975m-4.662-4.387q.362-.363.362-.888t-.363-.888T9.25 8t-.888.363T8 9.25t.363.888t.887.362t.888-.363m5.5 0Q16 9.776 16 9.25t-.363-.888T14.75 8t-.888.363t-.362.887t.363.888t.887.362t.888-.363M12 21l-1.45-1.25q-2.525-2.2-4.175-3.8T3.75 13.075t-1.362-2.35T2 8.5q0-2.35 1.575-3.925T7.5 3q1.3 0 2.475.55T12 5.1q.85-1 2.025-1.55T16.5 3q2.35 0 3.925 1.575T22 8.5q0 1.15-.387 2.225t-1.363 2.35t-2.625 2.875t-4.175 3.8z" />
                         </svg>
                     </button>
                 </div>
                 <div class="panel-body">
-                    <p class="quote" id="quote-text">Quote</p>
-                    <p class="author" id="quote-author">- Author</p>
+                    <p class="quote">Quote</p>
+                    <p class="author">- Author</p>
                 </div>
             </div>
 
@@ -297,8 +239,73 @@
         </div>
     </div>
 
+    <!-- Add Timetable Modal -->
+    <div id="timetable-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add Timetable Entry</h3>
+                <button id="timetable-close-btn" class="modal-close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="modal-timetable-day">Day</label>
+                    <select id="modal-timetable-day">
+                        <option value="Mon">Monday</option>
+                        <option value="Tue">Tuesday</option>
+                        <option value="Wed">Wednesday</option>
+                        <option value="Thu">Thursday</option>
+                        <option value="Fri">Friday</option>
+                        <option value="Sat">Saturday</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="modal-timetable-subject">Subject</label>
+                    <input type="text" id="modal-timetable-subject" placeholder="e.g. MATHS">
+                </div>
+                <div class="form-group">
+                    <label for="modal-timetable-location">Location / Room</label>
+                    <input type="text" id="modal-timetable-location" placeholder="e.g. AB3 - 405">
+                </div>
+                <div class="form-group">
+                    <label for="modal-timetable-start">Start Time</label>
+                    <select id="modal-timetable-start">
+                        <option value="08:00">08:00</option>
+                        <option value="09:00">09:00</option>
+                        <option value="10:00">10:00</option>
+                        <option value="10:30">10:30</option>
+                        <option value="11:30">11:30</option>
+                        <option value="12:30">12:30</option>
+                        <option value="01:00">01:00</option>
+                        <option value="02:00">02:00</option>
+                        <option value="03:00">03:00</option>
+                        <option value="03:30">03:30</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="modal-timetable-end">End Time</label>
+                    <select id="modal-timetable-end">
+                        <option value="09:00">09:00</option>
+                        <option value="10:00">10:00</option>
+                        <option value="10:30">10:30</option>
+                        <option value="11:30">11:30</option>
+                        <option value="12:30">12:30</option>
+                        <option value="01:00">01:00</option>
+                        <option value="02:00">02:00</option>
+                        <option value="03:00">03:00</option>
+                        <option value="03:30">03:30</option>
+                        <option value="04:30">04:30</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="timetable-cancel-btn" class="modal-btn secondary">Cancel</button>
+                <button id="timetable-submit-btn" class="modal-btn primary">Add Entry</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Task Manager Script -->
     <script src="/scripts/dashboard.js"></script>
-    <script src="/scripts/quotes.js"></script>
+    <script src="/scripts/timetable.js"></script>
 </body>
 </html>

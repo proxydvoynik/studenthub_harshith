@@ -45,14 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('studenthub_habits', JSON.stringify(habits));
     };
 
-    // Sanitize user input to prevent XSS
-    const sanitize = (text) => {
-        return text.replace(/[&<>'"]/g, char => {
-            const escapeMap = { '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' };
-            return escapeMap[char] || char;
-        });
-    };
-
     // Render the task items in the DOM
     const renderTasks = () => {
         taskList.innerHTML = '';
@@ -65,10 +57,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     ${task.completed ? checkedIcon : uncheckedIcon}
                 </button>
                 <div class="task-info">
-                    <h4 class="task-title">${sanitize(task.title)}</h4>
-                    <span class="task-deadline">${sanitize(task.deadline)}</span>
+                    <h4 class="task-title">${task.title}</h4>
+                    <span class="task-deadline">${task.deadline}</span>
                 </div>
-                <span class="tag assignment">${sanitize(task.tag)}</span>
+                <span class="tag assignment">${task.tag}</span>
                 <button class="task-delete-btn" title="Delete task">
                     ${removeIcon}
                 </button>
@@ -100,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
             row.className = 'habit-row';
             row.dataset.id = habit.id;
 
-            let rowHTML = `<span class="habit-title">${sanitize(habit.title)}</span>`;
+            let rowHTML = `<span class="habit-title">${habit.title}</span>`;
             for (let day = 0; day < 7; day++) {
                 const isChecked = habit.history[day] ? 'checked' : '';
                 rowHTML += `<input type="checkbox" ${isChecked} data-day="${day}">`;

@@ -328,6 +328,7 @@ summary::-webkit-details-marker {
   font-size: 0.82rem;
   color: var(--clr-text);
   vertical-align: middle;
+  position: relative;
 }
 
 .timetable td.day-col {
@@ -349,6 +350,33 @@ summary::-webkit-details-marker {
 .timetable td.free {
   opacity: 0.4;
   border-style: dashed;
+}
+
+.timetable td .cell-delete-btn {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: rgba(0, 0, 0, 0.7);
+  color: var(--clr-text-secondary);
+  border: none;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  font-size: 10px;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.timetable td:hover .cell-delete-btn {
+  display: flex;
+}
+
+.timetable td .cell-delete-btn:hover {
+  color: var(--clr-accent);
+  background: rgba(0, 0, 0, 0.9);
 }
 
 /* ── Right Sidebar (Habits & Calendar) ── */
