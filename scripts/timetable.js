@@ -21,51 +21,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Default academic entries
     const defaultTimetable = {
-        Mon: [
-            { subject: 'CHEM', location: 'MBS', startTime: '08:00', endTime: '09:00' },
-            { subject: 'IOOP', location: 'TAN', startTime: '09:00', endTime: '10:00' },
-            { subject: 'Break', location: '', startTime: '10:00', endTime: '10:30' },
-            { subject: 'MATHS', location: 'SHS', startTime: '10:30', endTime: '11:30' },
-            { subject: 'EMSB', location: 'BS', startTime: '11:30', endTime: '12:30' },
-            { subject: 'Lunch Break', location: '', startTime: '12:30', endTime: '02:00' },
-            { subject: 'DAV LAB (2:00 - 5:00 PM)', location: 'AB1: 129', startTime: '02:00', endTime: '04:30' }
-        ],
-        Tue: [
-            { subject: 'Lunch Break', location: '', startTime: '11:30', endTime: '01:00' },
-            { subject: 'MATHS', location: 'SHS', startTime: '02:00', endTime: '03:00' },
-            { subject: 'Break', location: '', startTime: '03:00', endTime: '03:30' },
-            { subject: 'FEE', location: 'SPU', startTime: '03:30', endTime: '04:30' }
-        ],
-        Wed: [
-            { subject: 'EVS (P)', location: 'SSR', startTime: '08:00', endTime: '10:00' },
-            { subject: 'Break', location: '', startTime: '10:00', endTime: '10:30' },
-            { subject: 'IOOP', location: 'TAN', startTime: '10:30', endTime: '11:30' },
-            { subject: 'Lunch Break', location: '', startTime: '12:30', endTime: '02:00' },
-            { subject: 'CAEG LAB (2:00 - 5:00 PM)', location: 'PH1: AB1 328; PH2: AB3 331', startTime: '02:00', endTime: '04:30' }
-        ],
-        Thu: [
-            { subject: 'Lunch Break', location: '', startTime: '11:30', endTime: '01:00' },
-            { subject: 'FEE', location: 'SPU', startTime: '01:00', endTime: '02:00' },
-            { subject: 'CHEM', location: 'MBS', startTime: '02:00', endTime: '03:00' },
-            { subject: 'Break', location: '', startTime: '03:00', endTime: '03:30' },
-            { subject: 'IOOP', location: 'TAN', startTime: '03:30', endTime: '04:30' }
-        ],
-        Fri: [
-            { subject: 'MATHS', location: 'SHS', startTime: '08:00', endTime: '09:00' },
-            { subject: 'FEE', location: 'SPU', startTime: '09:00', endTime: '10:00' },
-            { subject: 'Break', location: '', startTime: '10:00', endTime: '10:30' },
-            { subject: 'CHEM', location: 'MBS', startTime: '10:30', endTime: '11:30' },
-            { subject: 'EMSB', location: 'BS', startTime: '11:30', endTime: '12:30' },
-            { subject: 'Lunch Break', location: '', startTime: '12:30', endTime: '02:00' }
-        ],
-        Sat: [
-            { subject: 'IOOP LAB', location: 'AB2: PROGRAMMING LAB 2', startTime: '08:00', endTime: '12:30' },
-            { subject: 'Lunch Break', location: '', startTime: '12:30', endTime: '01:00' },
-            { subject: 'MATHS', location: 'SHS', startTime: '01:00', endTime: '02:00' },
-            { subject: 'EMSB', location: 'BS', startTime: '02:00', endTime: '03:00' },
-            { subject: 'Break', location: '', startTime: '03:00', endTime: '03:30' },
-            { subject: 'EVS (L)', location: 'SSR', startTime: '03:30', endTime: '04:30' }
-        ]
+        Mon: [],
+        Tue: [],
+        Wed: [],
+        Thu: [],
+        Fri: [],
+        Sat: []
     };
 
     // Load timetable from local storage or use defaults

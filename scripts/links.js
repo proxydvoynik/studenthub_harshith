@@ -10,11 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalLinkUrl = document.getElementById('modal-link-url');
 
     // Default links if none exist in localStorage
-    const defaultLinks = [
-        { id: '1', name: 'Google', url: 'https://google.com' },
-        { id: '2', name: 'GitHub', url: 'https://github.com' },
-        { id: '3', name: 'YouTube', url: 'https://youtube.com' }
-    ];
+    const defaultLinks = [];
 
     let links = JSON.parse(localStorage.getItem('student_links')) || defaultLinks;
 

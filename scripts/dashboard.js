@@ -26,14 +26,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const removeIcon = `<svg class="remove-svg" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none" /><path fill="currentColor" d="M6 13q-.425 0-.712-.288T5 12t.288-.712T6 11h12q.425 0 .713.288T19 12t-.288.713T18 13z" /></svg>`;
 
     // Load saved tasks or initialize with a default one
-    let tasks = JSON.parse(localStorage.getItem('studenthub_tasks')) || [
-        { id: 1, title: 'Math Assignment 3', deadline: 'Due: Today, 11:59 PM', tag: 'Assignment', completed: false }
-    ];
+    let tasks = JSON.parse(localStorage.getItem('studenthub_tasks')) || [];
 
     // Load saved habits or initialize with default
-    let habits = JSON.parse(localStorage.getItem('studenthub_habits')) || [
-        { id: 1, title: 'Read 10 pgs', history: [true, true, false, true, false, false, false] }
-    ];
+    let habits = JSON.parse(localStorage.getItem('studenthub_habits')) || [];
 
     // Synchronize tasks with browser storage
     const saveToStorage = () => {
