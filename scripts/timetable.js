@@ -94,9 +94,11 @@ document.addEventListener('DOMContentLoaded', () => {
             dayEntries.forEach(entry => {
                 const startIdx = timeToIdx[entry.startTime];
                 const endIdx = timeToIdx[entry.endTime];
-                slots[startIdx] = entry;
-                for (let j = startIdx + 1; j < endIdx; j++) {
-                    slots[j] = { merged: true };
+                if (startIdx !== undefined && endIdx !== undefined && startIdx < endIdx) {
+                    slots[startIdx] = entry;
+                    for (let j = startIdx + 1; j < endIdx; j++) {
+                        slots[j] = { merged: true };
+                    }
                 }
             });
 
