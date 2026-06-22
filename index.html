@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="StudentHub helps students manage tasks, take notes, follow a weekly timetable, and build study habits — all in one simple dashboard.">
+    <meta name="description" content="StudentHub helps students manage tasks, save quick links, follow a weekly timetable, and build study habits — all in one simple dashboard.">
     <title>StudentHub — Your Student Life, Organized</title>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cutive+Mono&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles/index.css">
 </head>
 <body>
 
     <!--Navbar-->
     <div class="container-navbar">
         <a href="#" class="navbar-logo">
-            <img src="assests/main-icon.png" alt="StudentHub Logo" class="logo-image">
+            <img src="assets/main-icon.png" alt="StudentHub Logo" class="logo-image">
             <h4 class="navbar-logo-text">StudentHub</h4>
         </a>
         <div class="nav-links">
@@ -26,7 +26,7 @@
             <a href="#how-it-works">How it Works</a>
         </div>
         <div class="explore-button">
-            <a href="#">Explore</a>
+            <a href="dashboard.html">Explore</a>
         </div>
     </div>
 
@@ -34,12 +34,12 @@
     <div class="hero-section">
         <div class="hero-content-text">
             <h1>Your student life, organized in one dashboard.</h1>
-            <p>StudentHub helps students manage tasks, keep quick notes, follow a weekly timetable, and build study habits, all in one place.</p>
+            <p>StudentHub helps students manage tasks, save resource quick links, follow a weekly timetable, and build study habits, all in one place.</p>
             <a href="#features" class="features-button">See Features</a>
             <a href="#how-it-works" class="help-button">How it Works</a>
         </div>
         <div class="hero-content-image">
-            <img src="assests/hero-section-image.png" alt="StudentHub Dashboard" class="hero-image">
+            <img src="assets/hero-section-image.png" alt="StudentHub Dashboard" class="hero-image">
         </div>
     </div>
 
@@ -50,7 +50,7 @@
             <p>StudentHub is built to stay simple, so you can focus on your studies.</p>
         </div>
         <div class="feature-cards">
-            <div class="feature-card-1">
+            <div class="feature-card">
                 <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 24 24">
                     <path d="M0 0h24v24H0z" fill="none" />
                     <path fill="currentColor" d="m10.95 18l5.65-5.65l-1.45-1.45l-4.225 4.225l-2.1-2.1L7.4 14.45zM6 22q-.825 0-1.412-.587T4 20V4q0-.825.588-1.412T6 2h8l6 6v12q0 .825-.587 1.413T18 22zm7-13h5l-5-5z" />
@@ -58,15 +58,14 @@
                 <h2>Task Management</h2>
                 <p>Keep track of assignments, exams, and deadlines in one place. Organize your tasks so nothing gets missed.</p>
             </div>
-            <div class="feature-card-2">
+            <div class="feature-card">
                 <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 24 24">
-                    <path d="M0 0h24v24H0z" fill="none" />
-                    <path fill="currentColor" d="M17.5 21h1v-2.5H21v-1h-2.5V15h-1v2.5H15v1h2.5zm.5 2q-2.075 0-3.537-1.463T13 18t1.463-3.537T18 13t3.538 1.463T23 18t-1.463 3.538T18 23M7 9h10V7H7zm4.675 12H5q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h14q.825 0 1.413.588T21 5v6.7q-.725-.35-1.463-.525T18 11q-.275 0-.513.012t-.487.063V11H7v2h6.125q-.45.425-.812.925T11.675 15H7v2h4.075q-.05.25-.062.488T11 18q0 .825.15 1.538T11.675 21" />
+                    <path fill="currentColor" d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
                 </svg>
-                <h2>Note Taking</h2>
-                <p>Jot down important ideas and reminders during lectures or study sessions so you can check them later.</p>
+                <h2>Quick Links</h2>
+                <p>Save custom names and URLs as bookmark cards to navigate to your resources instantly in new tabs.</p>
             </div>
-            <div class="feature-card-3">
+            <div class="feature-card">
                 <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 24 24">
                     <path d="M0 0h24v24H0z" fill="none" />
                     <path fill="currentColor" d="M3 8V5q0-.825.588-1.412T5 3h14q.825 0 1.413.588T21 5v3zm2 13q-.825 0-1.412-.587T3 19v-9h4.5v11zm11.5 0V10H21v9q0 .825-.587 1.413T19 21zm-7 0V10h5v11z" />
@@ -74,7 +73,7 @@
                 <h2>Timetable Management</h2>
                 <p>Plan your week with a clear visual schedule. See busy times and open study slots at a glance.</p>
             </div>
-            <div class="feature-card-4">
+            <div class="feature-card">
                 <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 24 24">
                     <path d="M0 0h24v24H0z" fill="none" />
                     <path fill="currentColor" d="M17.55 12L14 8.45l1.425-1.4l2.125 2.125l4.25-4.25l1.4 1.425zM6.175 10.825Q5 9.65 5 8t1.175-2.825T9 4t2.825 1.175T13 8t-1.175 2.825T9 12t-2.825-1.175M1 20v-2.8q0-.85.438-1.562T2.6 14.55q1.55-.775 3.15-1.162T9 13t3.25.388t3.15 1.162q.725.375 1.163 1.088T17 17.2V20z" />
@@ -92,12 +91,12 @@
             <p>StudentHub brings the most common student needs into one simple workflow: plan work, capture information, view the week, and stay consistent.</p>
         </div>
         <div class="how-it-works-cards">
-            <div class="how-it-works-card-1">
+            <div class="how-it-works-card">
                 <dl>
                     <dt>Plan the day</dt>
                     <dd>Use the task area to write down assignments, goals, or revision targets.</dd>
-                    <dt>Capture important notes</dt>
-                    <dd>Save quick references from class, project ideas, or reminders before they slip away.</dd>
+                    <dt>Access links instantly</dt>
+                    <dd>Save custom resource bookmarks to navigate to your key portals in a single click.</dd>
                     <dt>See the week clearly</dt>
                     <dd>Check the timetable to understand busy slots and available study windows.</dd>
                     <dt>Stay consistent</dt>
@@ -105,7 +104,7 @@
                 </dl>
             </div>
             <div class="how-it-works-image-wrapper">
-                <img src="assests/how-it-helps-section-image.png" alt="How StudentHub Works" class="how-it-works-image">
+                <img src="assets/how-it-helps-section-image.png" alt="How StudentHub Works" class="how-it-works-image">
             </div>
         </div>
     </div>
@@ -113,7 +112,7 @@
     <!--Final Section-->
     <div class="final-section">
         <h1>Ready to get organized?</h1>
-        <p>Join StudentHub today and start organizing your studies with less stress. Manage tasks, take notes, and stay on top of your schedule.</p>
+        <p>Join StudentHub today and start organizing your studies with less stress. Manage tasks, save quick links, and stay on top of your schedule.</p>
         <a href="#" class="get-started-button">Get Started</a>
     </div>
 

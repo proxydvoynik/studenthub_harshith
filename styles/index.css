@@ -153,10 +153,7 @@ p, a, li, dd {
   justify-content: center;
   gap: 30px;
 }
-.feature-card-1,
-.feature-card-2,
-.feature-card-3,
-.feature-card-4 {
+.feature-card {
   padding: 30px;
   border: 1px solid var(--clr-border);
   background: var(--clr-bg-card);
@@ -197,21 +194,21 @@ p, a, li, dd {
   align-items: center;
   gap: 50px;
 }
-.how-it-works-card-1 {
+.how-it-works-card {
   max-width: 500px;
 }
-.how-it-works-card-1 dl {
+.how-it-works-card dl {
   margin: 0;
   padding: 0;
 }
-.how-it-works-card-1 dt {
+.how-it-works-card dt {
   font-family: var(--font-heading);
   font-size: 1.4rem;
   font-weight: 600;
   color: var(--clr-accent);
   margin-bottom: 6px;
 }
-.how-it-works-card-1 dd {
+.how-it-works-card dd {
   margin: 0 0 20px;
   line-height: 1.6;
   color: var(--clr-text-muted);
