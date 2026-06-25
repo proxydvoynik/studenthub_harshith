@@ -46,31 +46,31 @@ document.addEventListener('DOMContentLoaded', () => {
         taskList.innerHTML = '';
         tasks.forEach(task => {
             const taskItem = document.createElement('div');
-            taskItem.className = `task-item ${task.completed ? 'completed' : ''}`;
+            taskItem.className = `flex items-center gap-2.5 p-2.5 bg-[#111111] border border-border rounded-lg transition-all ${task.completed ? 'opacity-60' : ''}`;
             
             taskItem.innerHTML = `
-                <button class="task-check-btn ${task.completed ? 'checked' : ''}" title="${task.completed ? 'Mark incomplete' : 'Mark complete'}">
+                <button class="bg-transparent border-none cursor-pointer flex items-center justify-center text-lg p-0 transition-colors ${task.completed ? 'text-accent' : 'text-text-secondary hover:text-accent'}" title="${task.completed ? 'Mark incomplete' : 'Mark complete'}">
                     ${task.completed ? checkedIcon : uncheckedIcon}
                 </button>
-                <div class="task-info">
-                    <h4 class="task-title">${task.title}</h4>
-                    <span class="task-deadline">${task.deadline}</span>
+                <div class="flex-1 min-w-0">
+                    <h4 class="font-heading font-medium text-xs m-0 truncate ${task.completed ? 'text-text-secondary line-through' : 'text-white'}">${task.title}</h4>
+                    <span class="block text-[10px] text-text-secondary mt-0.5">${task.deadline}</span>
                 </div>
-                <span class="tag assignment">${task.tag}</span>
-                <button class="task-delete-btn" title="Delete task">
+                <span class="font-heading text-[9px] font-semibold py-0.5 px-1.5 rounded uppercase tracking-wider bg-accent/10 text-accent border border-accent/20 flex-shrink-0">${task.tag}</span>
+                <button class="bg-transparent border-none text-text-secondary cursor-pointer flex items-center justify-center text-lg p-0 transition-colors hover:text-accent" title="Delete task">
                     ${removeIcon}
                 </button>
             `;
 
             // Toggle checkbox status
-            taskItem.querySelector('.task-check-btn').addEventListener('click', () => {
+            taskItem.querySelector('button:first-of-type').addEventListener('click', () => {
                 task.completed = !task.completed;
                 saveToStorage();
                 renderTasks();
             });
 
             // Delete task item
-            taskItem.querySelector('.task-delete-btn').addEventListener('click', () => {
+            taskItem.querySelector('button:last-of-type').addEventListener('click', () => {
                 tasks = tasks.filter(item => item.id !== task.id);
                 saveToStorage();
                 renderTasks();
@@ -85,16 +85,16 @@ document.addEventListener('DOMContentLoaded', () => {
         habitList.innerHTML = '';
         habits.forEach(habit => {
             const row = document.createElement('div');
-            row.className = 'habit-row';
+            row.className = 'grid grid-cols-[1fr_repeat(7,20px)_20px] gap-2 items-center mb-2 last:mb-0';
             row.dataset.id = habit.id;
 
-            let rowHTML = `<span class="habit-title">${habit.title}</span>`;
+            let rowHTML = `<span class="text-left text-[11px] text-text-muted truncate font-heading">${habit.title}</span>`;
             for (let day = 0; day < 7; day++) {
                 const isChecked = habit.history[day] ? 'checked' : '';
-                rowHTML += `<input type="checkbox" ${isChecked} data-day="${day}">`;
+                rowHTML += `<input type="checkbox" ${isChecked} data-day="${day}" class="appearance-none w-2.5 h-2.5 rounded-full border border-border bg-transparent outline-none cursor-pointer checked:bg-accent checked:border-accent transition-all">`;
             }
             rowHTML += `
-                <button class="habit-delete-btn" title="Delete habit">
+                <button class="bg-transparent border-none text-text-secondary cursor-pointer flex items-center justify-center text-sm p-0 transition-colors hover:text-accent" title="Delete habit">
                     ${removeIcon}
                 </button>
             `;
@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             // Handle habit deletion
-            row.querySelector('.habit-delete-btn').addEventListener('click', () => {
+            row.querySelector('button').addEventListener('click', () => {
                 habits = habits.filter(item => item.id !== habit.id);
                 saveHabits();
                 renderHabits();

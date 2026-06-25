@@ -24,17 +24,17 @@ document.addEventListener('DOMContentLoaded', () => {
         linksContainer.innerHTML = '';
         links.forEach(link => {
             const wrapper = document.createElement('div');
-            wrapper.className = 'link-button-wrapper';
+            wrapper.className = 'relative flex group';
 
             const a = document.createElement('a');
-            a.className = 'link-button';
+            a.className = 'flex-1 flex items-center justify-center text-center py-2.5 px-3.5 bg-accent/5 border border-border rounded-lg text-white font-heading text-sm font-medium transition-all duration-200 hover:bg-accent/10 hover:border-accent hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(255,30,45,0.2)] active:translate-y-0';
             a.textContent = link.name;
             a.href = link.url;
             a.target = '_blank';
             a.rel = 'noopener noreferrer';
 
             const deleteBtn = document.createElement('button');
-            deleteBtn.className = 'link-delete-btn';
+            deleteBtn.className = 'absolute -top-1.5 -right-1.5 bg-[#181818] border border-border text-text-secondary w-4.5 h-4.5 rounded-full cursor-pointer flex items-center justify-center text-xs opacity-0 transition-all group-hover:opacity-100 hover:bg-accent hover:border-accent hover:text-white z-10';
             deleteBtn.innerHTML = '&times;';
             deleteBtn.title = 'Delete Link';
             deleteBtn.addEventListener('click', (e) => {
