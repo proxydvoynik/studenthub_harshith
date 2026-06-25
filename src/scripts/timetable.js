@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const item = slots[i];
                 if (item === null) {
                     const freeTd = document.createElement('td');
-                    freeTd.className = 'free';
+                    freeTd.className = 'py-3 px-4 border border-border text-text-secondary opacity-40 italic text-center transition-colors relative';
                     freeTd.textContent = 'Free';
                     row.appendChild(freeTd);
                 } else if (item.merged) {
@@ -84,10 +84,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     const isBreak = item.subject.toLowerCase().includes('break');
                     if (isBreak) {
-                        td.className = 'free';
+                        td.className = 'py-3 px-4 border border-border text-text-secondary bg-neutral/40 italic text-[11px] text-center transition-colors relative group';
                         td.textContent = item.subject;
                     } else {
-                        const roomHTML = item.location ? `<span class="room">${item.location}</span>` : '';
+                        td.className = 'py-3 px-4 border border-border text-accent bg-accent/5 font-heading font-semibold text-center transition-all hover:bg-accent/10 relative group';
+                        const roomHTML = item.location ? `<span class="block text-[9px] text-text-secondary font-normal uppercase mt-1">${item.location}</span>` : '';
                         td.innerHTML = `
                             ${item.subject}
                             ${roomHTML}
@@ -96,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     // Hover delete button for cells
                     const deleteBtn = document.createElement('button');
-                    deleteBtn.className = 'cell-delete-btn';
+                    deleteBtn.className = 'absolute top-0.5 right-0.5 bg-transparent border-none text-text-secondary text-xs cursor-pointer leading-none opacity-0 group-hover:opacity-100 transition-all hover:text-accent';
                     deleteBtn.title = 'Delete entry';
                     deleteBtn.innerHTML = '&times;';
                     deleteBtn.addEventListener('click', () => {
