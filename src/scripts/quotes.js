@@ -3,36 +3,34 @@ document.addEventListener('DOMContentLoaded', () => {
     const quoteAuthor = document.getElementById('quote-author');
     const newQuoteBtn = document.getElementById('new-quote-btn');
 
-    const fallbackQuote = {
+    const fallback = {
         quote: "Simplicity is the ultimate sophistication.",
         author: "Leonardo da Vinci"
     };
 
-    const fetchQuote = () => {
+    const loadQuote = async () => {
+        if (!quoteText || !quoteAuthor) return;
+
         quoteText.textContent = "Loading quote...";
         quoteAuthor.textContent = "";
 
-        fetch('https://dummyjson.com/quotes/random')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('API request failed');
-                }
-                return response.json();
-            })
-            .then(data => {
-                quoteText.textContent = `"${data.quote}"`;
-                quoteAuthor.textContent = `- ${data.author}`;
-            })
-            .catch(() => {
-                quoteText.textContent = `"${fallbackQuote.quote}"`;
-                quoteAuthor.textContent = `- ${fallbackQuote.author}`;
-            });
+        try {
+            const res = await fetch('https://dummyjson.com/quotes/random');
+            if (!res.ok) throw new Error('API server returned error status');
+            
+            const data = await res.json();
+            quoteText.textContent = `"${data.quote}"`;
+            quoteAuthor.textContent = `- ${data.author}`;
+        } catch (err) {
+            console.error('Failed to load random quote:', err);
+            quoteText.textContent = `"${fallback.quote}"`;
+            quoteAuthor.textContent = `- ${fallback.author}`;
+        }
     };
 
     if (newQuoteBtn) {
-        newQuoteBtn.addEventListener('click', fetchQuote);
+        newQuoteBtn.addEventListener('click', loadQuote);
     }
 
-    // Load initial quote
-    fetchQuote();
+    loadQuote();
 });

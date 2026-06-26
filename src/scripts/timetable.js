@@ -1,11 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // DOM Elements
     const timetableBody = document.getElementById('timetable-body');
-    const openBtn = document.getElementById('open-timetable-modal-btn');
-    const modal = document.getElementById('timetable-modal');
-    const closeBtn = document.getElementById('timetable-close-btn');
-    const cancelBtn = document.getElementById('timetable-cancel-btn');
-    const submitBtn = document.getElementById('timetable-submit-btn');
 
     const dayInput = document.getElementById('modal-timetable-day');
     const subjectInput = document.getElementById('modal-timetable-subject');
@@ -13,30 +7,46 @@ document.addEventListener('DOMContentLoaded', () => {
     const startInput = document.getElementById('modal-timetable-start');
     const endInput = document.getElementById('modal-timetable-end');
 
-    // Time boundaries mapping to slot indices
     const timeToIdx = {
         "08:00": 0, "09:00": 1, "10:00": 2, "10:30": 3, "11:30": 4,
         "12:30": 5, "01:00": 6, "02:00": 7, "03:00": 8, "03:30": 9, "04:30": 10
     };
 
-    // Default academic entries
     const defaultTimetable = {
-        Mon: [],
-        Tue: [],
-        Wed: [],
-        Thu: [],
-        Fri: [],
-        Sat: []
+        Mon: [], Tue: [], Wed: [], Thu: [], Fri: [], Sat: []
     };
 
-    // Load timetable from local storage or use defaults
-    let timetable = JSON.parse(localStorage.getItem('studenthub_timetable')) || defaultTimetable;
-
-    const saveTimetable = () => {
-        localStorage.setItem('studenthub_timetable', JSON.stringify(timetable));
+    const loadStorage = (key, fallback) => {
+        try {
+            const data = localStorage.getItem(key);
+            return data ? JSON.parse(data) : fallback;
+        } catch (e) {
+            console.error(`Failed to parse localStorage key "${key}":`, e);
+            return fallback;
+        }
     };
 
-    // Render the weekly timetable
+    const saveStorage = (key, data) => {
+        try {
+            localStorage.setItem(key, JSON.stringify(data));
+        } catch (e) {
+            console.error(`Failed to save localStorage key "${key}":`, e);
+        }
+    };
+
+    const escapeHTML = (str) => {
+        if (!str) return '';
+        return str.replace(/[&<>'"]/g, tag => ({
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            "'": '&#39;',
+            '"': '&quot;'
+        }[tag] || tag));
+    };
+
+    let timetable = loadStorage('studenthub_timetable', defaultTimetable);
+
     const renderTimetable = () => {
         timetableBody.innerHTML = '';
         const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -88,21 +98,20 @@ document.addEventListener('DOMContentLoaded', () => {
                         td.textContent = item.subject;
                     } else {
                         td.className = 'py-3 px-4 border border-border text-accent bg-accent/5 font-heading font-semibold text-center transition-all hover:bg-accent/10 relative group';
-                        const roomHTML = item.location ? `<span class="block text-[9px] text-text-secondary font-normal uppercase mt-1">${item.location}</span>` : '';
+                        const roomHTML = item.location ? `<span class="block text-[9px] text-text-secondary font-normal uppercase mt-1">${escapeHTML(item.location)}</span>` : '';
                         td.innerHTML = `
-                            ${item.subject}
+                            ${escapeHTML(item.subject)}
                             ${roomHTML}
                         `;
                     }
 
-                    // Hover delete button for cells
                     const deleteBtn = document.createElement('button');
                     deleteBtn.className = 'absolute top-0.5 right-0.5 bg-transparent border-none text-text-secondary text-xs cursor-pointer leading-none opacity-0 group-hover:opacity-100 transition-all hover:text-accent';
                     deleteBtn.title = 'Delete entry';
                     deleteBtn.innerHTML = '&times;';
                     deleteBtn.addEventListener('click', () => {
                         timetable[day] = timetable[day].filter(e => e !== item);
-                        saveTimetable();
+                        saveStorage('studenthub_timetable', timetable);
                         renderTimetable();
                     });
 
@@ -115,84 +124,95 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // Modal Handlers
-    const openModal = () => {
-        modal.style.display = 'flex';
-        subjectInput.focus();
-    };
+    const setupModal = (modalId, openBtnId, closeBtnId, cancelBtnId, onOpen) => {
+        const modal = document.getElementById(modalId);
+        const openBtn = document.getElementById(openBtnId);
+        const closeBtn = document.getElementById(closeBtnId);
+        const cancelBtn = document.getElementById(cancelBtnId);
 
-    const closeModal = () => {
-        modal.style.display = 'none';
-        subjectInput.value = '';
-        locationInput.value = '';
-        startInput.selectedIndex = 0;
-        endInput.selectedIndex = 0;
-    };
+        if (!modal) return null;
 
-    const submitEntry = () => {
-        const day = dayInput.value;
-        const subject = subjectInput.value.trim();
-        const location = locationInput.value.trim();
-        const startTime = startInput.value;
-        const endTime = endInput.value;
+        const close = () => {
+            modal.style.display = 'none';
+            modal.querySelectorAll('input').forEach(input => input.value = '');
+            modal.querySelectorAll('select').forEach(select => select.selectedIndex = 0);
+        };
 
-        if (!subject) {
-            alert('Please enter a subject name.');
-            return;
-        }
+        const open = () => {
+            modal.style.display = 'flex';
+            if (onOpen) onOpen();
+        };
 
-        const startIdx = timeToIdx[startTime];
-        const endIdx = timeToIdx[endTime];
-
-        if (startIdx >= endIdx) {
-            alert('End time must be after the start time.');
-            return;
-        }
-
-        // Overlap verification check
-        const dayEntries = timetable[day] || [];
-        const overlaps = dayEntries.some(entry => {
-            const entryStart = timeToIdx[entry.startTime];
-            const entryEnd = timeToIdx[entry.endTime];
-            return (startIdx < entryEnd && endIdx > entryStart);
+        if (openBtn) openBtn.addEventListener('click', open);
+        [closeBtn, cancelBtn].forEach(btn => {
+            if (btn) btn.addEventListener('click', close);
         });
 
-        if (overlaps) {
-            alert('This timeslot overlaps with an existing entry.');
-            return;
-        }
-
-        dayEntries.push({
-            subject,
-            location,
-            startTime,
-            endTime
+        modal.addEventListener('click', (event) => {
+            if (event.target === modal) close();
         });
 
-        timetable[day] = dayEntries;
-        saveTimetable();
-        renderTimetable();
-        closeModal();
+        return { open, close };
     };
 
-    // Event Bindings
-    if (openBtn) openBtn.addEventListener('click', openModal);
-    if (closeBtn) closeBtn.addEventListener('click', closeModal);
-    if (cancelBtn) cancelBtn.addEventListener('click', closeModal);
-    if (submitBtn) submitBtn.addEventListener('click', submitEntry);
+    const timetableModal = setupModal('timetable-modal', 'open-timetable-modal-btn', 'timetable-close-btn', 'timetable-cancel-btn', () => subjectInput.focus());
 
-    modal.addEventListener('click', (event) => {
-        if (event.target === modal) {
-            closeModal();
-        }
-    });
+    const submitTimetableBtn = document.getElementById('timetable-submit-btn');
+    if (submitTimetableBtn) {
+        submitTimetableBtn.addEventListener('click', () => {
+            const day = dayInput.value;
+            const subject = subjectInput.value.trim();
+            const location = locationInput.value.trim();
+            const startTime = startInput.value;
+            const endTime = endInput.value;
+
+            if (!subject) {
+                alert('Please enter a subject name.');
+                return;
+            }
+
+            const startIdx = timeToIdx[startTime];
+            const endIdx = timeToIdx[endTime];
+
+            if (startIdx >= endIdx) {
+                alert('End time must be after the start time.');
+                return;
+            }
+
+            const dayEntries = timetable[day] || [];
+            const overlaps = dayEntries.some(entry => {
+                const entryStart = timeToIdx[entry.startTime];
+                const entryEnd = timeToIdx[entry.endTime];
+                return (startIdx < entryEnd && endIdx > entryStart);
+            });
+
+            if (overlaps) {
+                alert('This timeslot overlaps with an existing entry.');
+                return;
+            }
+
+            dayEntries.push({
+                subject,
+                location,
+                startTime,
+                endTime
+            });
+
+            timetable[day] = dayEntries;
+            saveStorage('studenthub_timetable', timetable);
+            renderTimetable();
+            if (timetableModal) timetableModal.close();
+        });
+    }
 
     document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape' && modal.style.display === 'flex') {
-            closeModal();
+        if (event.key === 'Escape') {
+            const modalEl = document.getElementById('timetable-modal');
+            if (modalEl && modalEl.style.display === 'flex' && timetableModal) {
+                timetableModal.close();
+            }
         }
     });
 
-    // Initial timetable load
     renderTimetable();
 });

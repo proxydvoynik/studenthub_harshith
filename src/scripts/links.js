@@ -1,25 +1,28 @@
 document.addEventListener('DOMContentLoaded', () => {
     const linksContainer = document.getElementById('links-container');
-    const openLinkModalBtn = document.getElementById('open-link-modal-btn');
-    const linkModal = document.getElementById('link-modal');
-    const linkCloseBtn = document.getElementById('link-close-btn');
-    const linkCancelBtn = document.getElementById('link-cancel-btn');
-    const linkSubmitBtn = document.getElementById('link-submit-btn');
-
     const modalLinkName = document.getElementById('modal-link-name');
     const modalLinkUrl = document.getElementById('modal-link-url');
 
-    // Default links if none exist in localStorage
-    const defaultLinks = [];
-
-    let links = JSON.parse(localStorage.getItem('student_links')) || defaultLinks;
-
-    // Save links to localStorage
-    const saveLinks = () => {
-        localStorage.setItem('student_links', JSON.stringify(links));
+    const loadStorage = (key, fallback) => {
+        try {
+            const data = localStorage.getItem(key);
+            return data ? JSON.parse(data) : fallback;
+        } catch (e) {
+            console.error(`Failed to parse localStorage key "${key}":`, e);
+            return fallback;
+        }
     };
 
-    // Render links in container
+    const saveStorage = (key, data) => {
+        try {
+            localStorage.setItem(key, JSON.stringify(data));
+        } catch (e) {
+            console.error(`Failed to save localStorage key "${key}":`, e);
+        }
+    };
+
+    let links = loadStorage('student_links', []);
+
     const renderLinks = () => {
         linksContainer.innerHTML = '';
         links.forEach(link => {
@@ -40,7 +43,9 @@ document.addEventListener('DOMContentLoaded', () => {
             deleteBtn.addEventListener('click', (e) => {
                 e.preventDefault();
                 e.stopPropagation();
-                deleteLink(link.id);
+                links = links.filter(item => item.id !== link.id);
+                saveStorage('student_links', links);
+                renderLinks();
             });
 
             wrapper.appendChild(a);
@@ -49,63 +54,78 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // Delete a link by ID
-    const deleteLink = (id) => {
-        links = links.filter(link => link.id !== id);
-        saveLinks();
-        renderLinks();
-    };
+    const setupModal = (modalId, openBtnId, closeBtnId, cancelBtnId, onOpen) => {
+        const modal = document.getElementById(modalId);
+        const openBtn = document.getElementById(openBtnId);
+        const closeBtn = document.getElementById(closeBtnId);
+        const cancelBtn = document.getElementById(cancelBtnId);
 
-    // Open Modal
-    openLinkModalBtn.addEventListener('click', () => {
-        linkModal.style.display = 'flex';
-        modalLinkName.focus();
-    });
+        if (!modal) return null;
 
-    // Close Modal
-    const closeModal = () => {
-        linkModal.style.display = 'none';
-        modalLinkName.value = '';
-        modalLinkUrl.value = '';
-    };
-
-    linkCloseBtn.addEventListener('click', closeModal);
-    linkCancelBtn.addEventListener('click', closeModal);
-
-    // Close Modal on clicking overlay
-    linkModal.addEventListener('click', (e) => {
-        if (e.target === linkModal) {
-            closeModal();
-        }
-    });
-
-    // Add Link
-    linkSubmitBtn.addEventListener('click', () => {
-        const name = modalLinkName.value.trim();
-        let url = modalLinkUrl.value.trim();
-
-        if (!name || !url) {
-            alert('Please enter both a name and a URL.');
-            return;
-        }
-
-        // Format URL if protocol is missing
-        if (!/^https?:\/\//i.test(url)) {
-            url = 'https://' + url;
-        }
-
-        const newLink = {
-            id: Date.now().toString(),
-            name: name,
-            url: url
+        const close = () => {
+            modal.style.display = 'none';
+            modal.querySelectorAll('input').forEach(input => input.value = '');
         };
 
-        links.push(newLink);
-        saveLinks();
-        renderLinks();
-        closeModal();
+        const open = () => {
+            modal.style.display = 'flex';
+            if (onOpen) onOpen();
+        };
+
+        if (openBtn) openBtn.addEventListener('click', open);
+        [closeBtn, cancelBtn].forEach(btn => {
+            if (btn) btn.addEventListener('click', close);
+        });
+
+        modal.addEventListener('click', (event) => {
+            if (event.target === modal) close();
+        });
+
+        return { open, close };
+    };
+
+    const linkModal = setupModal('link-modal', 'open-link-modal-btn', 'link-close-btn', 'link-cancel-btn', () => modalLinkName.focus());
+
+    const submitLinkBtn = document.getElementById('link-submit-btn');
+    if (submitLinkBtn) {
+        submitLinkBtn.addEventListener('click', () => {
+            const name = modalLinkName.value.trim();
+            let url = modalLinkUrl.value.trim();
+
+            if (!name || !url) {
+                alert('Please enter both a name and a URL.');
+                return;
+            }
+
+            if (url.toLowerCase().startsWith('javascript:')) {
+                alert('Invalid URL scheme.');
+                return;
+            }
+
+            if (!/^https?:\/\//i.test(url)) {
+                url = 'https://' + url;
+            }
+
+            links.push({
+                id: Date.now().toString(),
+                name,
+                url
+            });
+
+            saveStorage('student_links', links);
+            renderLinks();
+            if (linkModal) linkModal.close();
+        });
+    }
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+            const modalEl = document.getElementById('link-modal');
+            if (modalEl && modalEl.style.display === 'flex' && linkModal) {
+                linkModal.close();
+            }
+        }
     });
 
-    // Initial render
     renderLinks();
 });

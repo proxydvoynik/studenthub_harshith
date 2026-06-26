@@ -24,31 +24,72 @@
 A fully responsive landing page for StudentHub with the following sections:
 
 - **Navbar** — Sticky navigation bar with logo, page links, and an Explore button
-- **Hero Section** — Headline, description, and call-to-action buttons alongside a dashboard preview image
-- **Features Section** — Four feature cards (Task Management, Note Taking, Timetable, Study Habits) displayed in a grid
+- **Hero Section** — Full viewport height (`100vh` / `min-h-screen`) hero banner featuring a headline, description, and call-to-action buttons alongside a dashboard preview image
+- **Features Section** — Four feature cards (Task Management, Quick Links, Timetable, Study Habits) displayed in a grid
 - **How it Works Section** — Step-by-step breakdown using a definition list with an accompanying illustration
 - **CTA Section** — Final call-to-action encouraging users to get started
 - **Footer** — Copyright and credits
 
-### Tech used
+### Tech used (Week 1)
 
 | Technology | Purpose |
 |---|---|
 | HTML5 | Page structure and content |
 | CSS3 | Styling, layout (Flexbox + Grid), and responsive design |
 
+---
 
-### Demo
+## Week 2 Progress — Interactive Dashboard with Persistent Data
 
-https://github.com/user-attachments/assets/3e210ee6-1148-4533-a180-45d8f66f4756
+### What was built
+
+A fully functional, persistent dashboard interface (`dashboard.html`) and landing page redesign powered entirely by utility-first **Tailwind CSS v4.0**:
+
+- **Task Management** — Add, complete, and delete custom tasks with deadlines and category tags.
+- **Weekly Class Timetable** — Manage a visual timetable. Columns automatically merge for longer classes and highlight class types/rooms with interactive hover-delete controls.
+- **Habits Tracker** — Create daily habit checklists that track progress across 7 days.
+- **Quick Links** — Save custom names and URLs to bookmark cards to quickly access reference sites.
+- **Dynamic Quotes** — Fetches random quotes from the DummyJSON API with graceful fallback logic.
+- **Tailwind CSS Integration** — Cleaned up project styling by removing all custom CSS files and replacing them with Tailwind CSS utility classes, utilizing CSS-first `@theme` settings for custom colors/fonts.
+
+### Tech used (Week 2)
+
+| Technology | Purpose |
+|---|---|
+| HTML5 | Page layouts and semantic structures |
+| Tailwind CSS v4.0 | Utility-first responsive styling and typography rules |
+| JavaScript (ES6) | LocalStorage persistence, DOM rendering, and API fetch calls |
+
+---
+
+## Project Structure
+
+```
+StudentHub/
+├── index.html                   # Landing page
+├── dashboard.html               # Interactive student workspace
+├── package.json                 # Build script setups & dependencies
+├── src/
+│   ├── styles/
+│   │   └── input.css            # Tailwind directives, theme variables, custom scrollbars
+│   └── scripts/
+│       ├── dashboard.js         # Handles dynamic rendering of tasks and habits
+│       ├── timetable.js         # Controls weekly schedule cell creation and mergers
+│       ├── links.js             # Handles link bookmark additions and deletions
+│       └── quotes.js            # Fetches and renders daily quotes from the web
+└── dist/
+    └── css/
+        └── output.css           # Compiled, minified stylesheet production bundle
+```
 
 ---
 
 ## Author
 
-**Harshith Saveesh**
-MIT CSE
+**Harshith Saveesh**  
+MIT CSE  
 
 ---
 
-> Project built as part of ISTE Summer Camp — Week 1 Submission
+> Project built as part of ISTE Summer Camp — Week 2 Submission
+
