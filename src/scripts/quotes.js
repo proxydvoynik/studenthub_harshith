@@ -4,8 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const newQuoteBtn = document.getElementById('new-quote-btn');
 
     const fallback = {
-        quote: "Simplicity is the ultimate sophistication.",
-        author: "Leonardo da Vinci"
+        quote: "To live is to risk it all; otherwise you’re just an inert chunk of randomly assembled molecules drifting wherever the universe blows you…",
+        author: "Richard Daniel Sanchez"
     };
 
     const loadQuote = async () => {
